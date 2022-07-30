@@ -22,7 +22,7 @@ npm i -g @nestjs/cli
 4. Levantar la base de datos
 
 ```
-docker -compose up -d
+docker-compose up -d
 ```
 
 5. Clonar el archivo **.env.template** y renombrar la copia a **.env**
@@ -45,3 +45,20 @@ http://localhost:3000/api/v2/seed
 
 - MongoDB
 - Nest
+
+# Build de Produccion
+1. Crear el Archivo ```.env.prod```
+2. Llenar las variables de entorno para produccion
+3. Crear la nueva imagen
+```
+docker-compose -f docker-compose.prod.yaml --env-file .env.prod up --build
+```
+
+# Notas
+
+Heroku redeploy sin cambios:
+
+```
+git commit --allow-empty -m "Heroku Deploy"
+git push heroku <master|main>
+```
